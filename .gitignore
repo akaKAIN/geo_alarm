@@ -114,4 +114,4 @@ dmypy.json
 
 shop/static/Product_image/
 
-secret.py
+geo_alarm/secret.py
