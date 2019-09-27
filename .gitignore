@@ -112,6 +112,4 @@ venv.bak/
 dmypy.json
 \.idea/
 
-shop/static/Product_image/
-
 geo_alarm/secret.py
