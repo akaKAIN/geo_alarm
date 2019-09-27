@@ -3,6 +3,6 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path('devices/', include('api.devices.urls')),
+    path('device/', include('api.devices.urls')),
 
 ]

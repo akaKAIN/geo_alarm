@@ -1,7 +1,8 @@
-from django.urls import path, include
-
+from django.urls import path
+from api.devices.views import DeviceCreate, DeviceList
 
 urlpatterns = [
+    path('create/', DeviceCreate.as_view()),
+    path('list/', DeviceList.as_view()),
 
-    # path('create/', DeviceCreate.as_view(), name='device-create')
 ]
