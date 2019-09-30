@@ -1,0 +1,18 @@
+{#<form action="/" method="POST">{% csrf_token %}#}
+
+<div>
+    {% if user.is_authenticated %}
+        <button class="btn-circle" id="{{ device.pk }}">Вкл/Выкл</button>
+    {% else %}
+        <button class="btn-circle" disabled>Доступ закрыт</button>
+    {% endif %}
+
+    {% if device.turn_on %}
+        <span id="status_{{ device.pk }}" class="btn-on">Тревога активирована!</span>
+    {% else %}
+        <span id="status_{{ device.pk }}" class="btn-off">Не активна</span>
+    {% endif %}
+</div>
+{#    <input type="hidden" name="_method" value="PUT">#}
+{#</form>#}
+

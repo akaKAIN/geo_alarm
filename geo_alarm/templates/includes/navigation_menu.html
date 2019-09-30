@@ -1,0 +1,18 @@
+<div class="navbar">
+
+    <a href="{% url 'devices-list' %}" class="navi_link">СПИСОК</a>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'rest_framework:logout' %}" class="navi_link">ВЫЙТИ</a>
+    {% else %}
+        <a href="{% url 'rest_framework:login' %}" class="navi_link">ВОЙТИ</a>
+    {% endif %}
+
+    <form>
+
+        <label>
+            <input type="search" name="search" class="search_field" placeholder="Введите текст для поиска">
+        </label>
+    </form>
+
+</div>

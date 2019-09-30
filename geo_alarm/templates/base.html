@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}{% endblock%}</title>
+    {% include 'includes/css_style.html' %}
+    {% include 'includes/ajax.html' %}
+
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    {% block content %}
-        <h2 style="color: red">some content</h2>
-    {% endblock content %}
+{% include 'includes/navigation_menu.html' %}
+{% block content %}
 
+    <h2 style="color: red">some content</h2>
+{% endblock content %}
 </body>
 </html>

@@ -1,0 +1,67 @@
+<div class="paginator">
+    {% if devices.paginator.num_pages > 1 %}
+        {% if devices.has_previous %}
+            <a href="{{ request.path }}?page={{ devices.previous_page_number }}">&lt;</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+        {% endif %}
+        Страница {{ devices.number }} из {{ devices.paginator.num_pages }}
+
+        {% if devices.has_next %}
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="
+                    {{ request.path }}{% if request.GET.search %}?search={{ request.GET.search }}&{% else %}?{% endif %}page={{ devices.next_page_number }}
+                ">&gt;</a>
+        {% endif %}
+    {% endif %}
+</div>
+
+
+{#<div>previous_url = {{ previous_url }}</div>{{ page_link.url }}{{ page_link.number }}{{ next_url }}#}
+{##}
+{#<ul class="pagination" style="margin: 5px 0 10px 0">#}
+{#  {% if previous_url %}#}
+{#    <li>#}
+{#      <a href="{{ previous_url }}" aria-label="Previous">#}
+{#        <span aria-hidden="true">&laquo;</span>#}
+{#      </a>#}
+{#    </li>#}
+{#  {% else %}#}
+{#    <li class="disabled">#}
+{#      <a href="#" aria-label="Previous">#}
+{#        <span aria-hidden="true">&laquo;</span>#}
+{#      </a>#}
+{#    </li>#}
+{#  {% endif %}#}
+{##}
+{#  {% for page_link in page_links %}#}
+{#    {% if page_link.is_break %}#}
+{#      <li class="disabled">#}
+{#        <a href="#"><span aria-hidden="true">&hellip;</span></a>#}
+{#      </li>#}
+{#    {% else %}#}
+{#      {% if page_link.is_active %}#}
+{#        <li class="active">#}
+{#          <a href="{{ page_link.url }}">{{ page_link.number }}</a>#}
+{#        </li>#}
+{#      {% else %}#}
+{#        <li>#}
+{#          <a href="{{ page_link.url }}">{{ page_link.number }}</a>#}
+{#        </li>#}
+{#      {% endif %}#}
+{#    {% endif %}#}
+{#  {% endfor %}#}
+{##}
+{#  {% if next_url %}#}
+{#    <li>#}
+{#      <a href="{{ next_url }}" aria-label="Next">#}
+{#        <span aria-hidden="true">&raquo;</span>#}
+{#      </a>#}
+{#    </li>#}
+{#  {% else %}#}
+{#    <li class="disabled">#}
+{#      <a href="#" aria-label="Next">#}
+{#        <span aria-hidden="true">&raquo;</span>#}
+{#      </a>#}
+{#    </li>#}
+{#  {% endif %}#}
+{#</ul>#}

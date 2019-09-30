@@ -1,0 +1,25 @@
+<script>
+    $(document).ready(function () {
+        $('.btn-circle').click(switchAlarm);
+
+        function switchAlarm() {
+            const id = $(this).attr('id');
+            const url = `/api/v1/device/switch/${id}/`;
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: {"pk": id, csrfmiddlewaretoken: '{{ csrf_token }}'},
+                dataType: 'json',
+                success: function () {
+                    if ($(`#status_${id}`).attr('class') === 'btn-on') {
+                        $(`#status_${id}`).attr('class', 'btn-off').text('Не активна');
+                    } else {
+                        $(`#status_${id}`).attr('class', 'btn-on').text('Тревога активирована!')
+                    }
+                }
+            })
+        }
+    })
+
+</script>

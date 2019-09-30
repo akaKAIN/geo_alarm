@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 {% block title %}
@@ -7,13 +8,20 @@
 
 
 {% block content %}
-<div class="device">
-    {{ device }}
-{% for elem in device %}
-{{ elem }}
-{% endfor %}
 
-</div>
+
+
+    <div class="device">
+        <div class="text_block">
+            <h3>Маркировка устрофства:</h3> {{ device }}
+            <h3>Адрес устрофства:</h3>{{ device.address }}
+            <h3>Тип устройства:</h3>{{ device.alarm_type }}
+        </div>
+
+        {% include 'includes/button_form_set.html' %}
+    </div>
+
+
 
 
 

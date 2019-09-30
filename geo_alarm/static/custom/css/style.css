@@ -1,5 +1,73 @@
+.device {
+    margin: auto;
+    padding: 30px 80px;
+    display: flex;
+}
+.btn-field,
+.btn-on,
 .btn-off {
-    height: 30px;
-    width: 30px;
+    padding: 10px 15px;
     border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    background-color: #4f5b69;
+    z-index: 1;
+    position: static;
+}
+
+.text_block {
+    margin: 0 50px;
+}
+
+.btn-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    text-decoration: none;
+    outline: none;
+    margin: -10px;
+    z-index: 3;
+    position: relative;
+}
+.btn-circle:hover {
+    background-color: #303947;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-on {
+    background-color: red;
+}
+
+.btn-field {
+    display: block;
+    line-height: 2.5;
+    text-decoration: none;
+    width: 400px;
+}
+
+.navbar {
+    height: 60px;
+    background-color: #4f5b69;
+    line-height: 60px;
+    padding-left: 80px;
+    display: flex;
+}
+
+.navi_link {
+    text-decoration: none;
+    font-size: large;
+    color: white;
+    margin-right: 40px;
+}
+
+.search_field {
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+    width: 385px;
+}
+
+.paginator {
+    margin-left: 270px;
 }
