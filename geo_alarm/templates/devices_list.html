@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
-{% load static %}
 
 
-{% block title %}
-    Список устройств
-{% endblock title %}
+{% block ajax %}{% include 'includes/ajax.html' %}{% endblock %}
+
+
+{% block title %}Список устройств{% endblock title %}
 
 
 {% block content %}
 
     {% for device in devices %}
         <div class="device">
-
             <a href="{% url 'device-detail' device.pk %}" class="btn-field">{{ device }}</a>
             {% include 'includes/button_form_set.html' %}
         </div>
     {% endfor %}
 
-    {% include 'includes/pagination.html' %}
+    <div class="paginator">
+        {% include 'includes/pagination.html' %}
+    </div>
 
 {% endblock content %}

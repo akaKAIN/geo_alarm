@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     {% include 'includes/css_style.html' %}
-    {% include 'includes/ajax.html' %}
+
+    {% block ajax %}{% endblock %}
 
     <title>{% block title %}{% endblock %}</title>
 </head>

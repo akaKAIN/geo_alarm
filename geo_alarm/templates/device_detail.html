@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
-{% load static %}
 
 
-{% block title %}
-    Детальный просмотр
-{% endblock title %}
+{% block ajax %}{% include 'includes/ajax.html' %}{% endblock %}
+
+
+{% block title %}Детальный просмотр{% endblock title %}
 
 
 {% block content %}
-
-
 
     <div class="device">
         <div class="text_block">
@@ -20,9 +18,5 @@
 
         {% include 'includes/button_form_set.html' %}
     </div>
-
-
-
-
 
 {% endblock content %}

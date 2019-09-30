@@ -1,4 +1,4 @@
-<div class="paginator">
+
     {% if devices.paginator.num_pages > 1 %}
         {% if devices.has_previous %}
             <a href="{{ request.path }}?page={{ devices.previous_page_number }}">&lt;</a>
@@ -13,7 +13,7 @@
                 ">&gt;</a>
         {% endif %}
     {% endif %}
-</div>
+
 
 
 {#<div>previous_url = {{ previous_url }}</div>{{ page_link.url }}{{ page_link.number }}{{ next_url }}#}

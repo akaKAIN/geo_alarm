@@ -10,32 +10,31 @@ from api.devices.serializers import DeviceSerializer
 from devices.models import Device
 
 
-class DeviceCreate(generics.CreateAPIView):
-    """Класс создания нового сигнализационного устройства"""
+class AbstractDevice:
+    """Абстрактный класс для наследования атрибутов"""
     permission_classes = [permissions.AllowAny]
-    queryset = Device.objects.filter(is_active=True)
+    queryset = Device.objects.filter(is_active=True).order_by('address')
     serializer_class = DeviceSerializer
+    renderer_classes = [TemplateHTMLRenderer]
+
+
+class DeviceCreate(AbstractDevice, generics.CreateAPIView):
+    """Класс создания нового сигнализационного устройства"""
 
     def post(self, request, *args, **kwargs):
         device = DeviceSerializer(data=request.data)
 
         if device.is_valid():
             device.save()
-        return Response(status=201)
+        return Response(data={'device': device}, status=201, template_name='device_form.html')
 
 
-class DeviceList(generics.ListAPIView):
+class DeviceList(AbstractDevice, generics.ListAPIView):
     """Класс просмотра списка устройств"""
-    permission_classes = [permissions.AllowAny]
-    queryset = Device.objects.filter(is_active=True).order_by('address')
-    serializer_class = DeviceSerializer
-    renderer_classes = [TemplateHTMLRenderer]
-    pagination_class = DeviceListPagination
 
     def get_queryset(self):
-
         queryset = super().get_queryset().filter(is_active=True)
-        search = self.request.GET.get('search', None)
+        search = self.request.GET.get('search')
         if search:
             queryset = queryset.filter(Q(label__icontains=search) | Q(address__icontains=search))
 
@@ -47,11 +46,8 @@ class DeviceList(generics.ListAPIView):
         return Response({'devices': self.get_queryset()}, template_name='devices_list.html')
 
 
-class DeviceDetail(generics.RetrieveAPIView):
+class DeviceDetail(AbstractDevice, generics.RetrieveAPIView):
     """Класс просмотра данных устройства"""
-    permission_classes = [permissions.AllowAny]
-    queryset = Device.objects.all()
-    renderer_classes = [TemplateHTMLRenderer]
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -60,7 +56,6 @@ class DeviceDetail(generics.RetrieveAPIView):
 
 class DeviceUpdate(generics.UpdateAPIView):
     """Класс для включения или выключения устройства"""
-    permission_classes = [permissions.AllowAny]
     serializer_class = DeviceSerializer
     queryset = Device.objects.all()
 
@@ -81,6 +76,7 @@ class DeviceUpdate(generics.UpdateAPIView):
 
 
 class DeviceUpdateAll(generics.UpdateAPIView):
+    """Класс включения и выключения всех устройств разом"""
     permission_classes = [permissions.AllowAny]
     serializer_class = DeviceSerializer
     queryset = Device.objects.all()
