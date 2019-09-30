@@ -80,5 +80,19 @@ class DeviceUpdate(generics.UpdateAPIView):
         return HttpResponseNotFound('<h1>Page not found</h1>')
 
 
+class DeviceUpdateAll(generics.UpdateAPIView):
+    permission_classes = [permissions.AllowAny]
+    serializer_class = DeviceSerializer
+    queryset = Device.objects.all()
+
+    def post(self, *args, **kwargs):
+        switch = self.request.data['switch']
+        if switch == 'switch_on':
+            Device.objects.update(turn_on=True)
+        elif switch == 'switch_off':
+            Device.objects.update(turn_on=False)
+        return Response(data={}, status=201)
+
+
 
 

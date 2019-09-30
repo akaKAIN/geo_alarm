@@ -29,11 +29,3 @@ class Device(models.Model):
         self.is_active = False
         self.save()
 
-    def switch_on(self):
-        self.turn_on = True
-        self.save()
-
-    def switch_off(self):
-        self.turn_on = False
-        self.save()
-

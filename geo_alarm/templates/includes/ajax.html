@@ -1,6 +1,7 @@
 <script>
     $(document).ready(function () {
         $('.btn-circle').click(switchAlarm);
+        $('.btn-circle-small').click(switchAlarmAll);
 
         function switchAlarm() {
             const id = $(this).attr('id');
@@ -17,6 +18,26 @@
                     } else {
                         $(`#status_${id}`).attr('class', 'btn-on').text('Тревога активирована!')
                     }
+                }
+            })
+        }
+
+        function switchAlarmAll() {
+            const id = $(this).attr('id');
+            const url = '{% url 'device-update-all' %}';
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: {"switch": id, csrfmiddlewaretoken: '{{ csrf_token }}'},
+                dataType: 'json',
+                success: function () {
+                    if (id === 'switch_on'){
+                        $('span').attr('class', 'btn-on').text('Тревога активирована!');
+                    }else if (id === 'switch_off') {
+                        $('span').attr('class', 'btn-off').text('Не активна');
+                    }
+
                 }
             })
         }

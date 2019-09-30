@@ -15,4 +15,11 @@
         </label>
     </form>
 
+    <div>
+        {% if user.is_authenticated %}
+            <button class="btn-circle-small" id="switch_on">Вкл ВСЁ</button>
+            <button class="btn-circle-small" id="switch_off">Выкл ВСЁ</button>
+        {% endif %}
+    </div>
+
 </div>
