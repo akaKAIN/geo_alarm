@@ -24,7 +24,7 @@
 
         function switchAlarmAll() {
             const id = $(this).attr('id');
-            const url = '{% url 'device-update-all' %}';
+            const url = '{% url 'device-switch-all' %}';
 
             $.ajax({
                 type: 'POST',

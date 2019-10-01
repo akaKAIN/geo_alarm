@@ -1,7 +1,8 @@
 from django.urls import path
-from api.devices.views import DeviceCreate, DeviceList
+
+from api.accounts.views import UserCreate
 
 urlpatterns = [
-    # path('create/', DeviceCreate.as_view()),
+    path('create/', UserCreate.as_view()),
 
 ]

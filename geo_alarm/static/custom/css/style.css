@@ -40,7 +40,7 @@
 .btn-circle-small {
     width: 115px;
     height: 50px;
-    border-radius: 20px;
+    border-radius: 10px;
     text-decoration: none;
     outline: none;
     z-index: 3;
@@ -80,6 +80,19 @@
     outline: none;
     width: 385px;
     margin-right: 100px;
+}
+
+.create_device {
+    color: white;
+    background-color: transparent;
+    border: 4px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+}
+.create_device:hover {
+    background-color: #d1d3c9;
+    color: black;
 }
 
 .paginator {

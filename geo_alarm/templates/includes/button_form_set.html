@@ -7,10 +7,20 @@
         <button class="btn-circle" disabled>Доступ закрыт</button>
     {% endif %}
 
+
+
+
     {% if device.turn_on %}
         <span id="status_{{ device.pk }}" class="btn-on">Тревога активирована!</span>
     {% else %}
         <span id="status_{{ device.pk }}" class="btn-off">Не активна</span>
+    {% endif %}
+
+    {% if user.is_staff or user.is_superuser %}
+
+        <a href="{% url 'device-update' device.pk %}" class="create_device" style="border: 2px solid gray; color: gray">EDIT</a>
+        <a href="{% url 'device-delete' device.pk %}" class="create_device" style="border: 2px solid gray; color: gray">DEL</a>
+
     {% endif %}
 </div>
 {#    <input type="hidden" name="_method" value="PUT">#}

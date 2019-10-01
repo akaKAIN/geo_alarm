@@ -17,6 +17,9 @@
 
     <div>
         {% if user.is_authenticated %}
+
+            <a href="{% url 'device-create' %}" type="submit" class="create_device" id="create">ДОБАВИТЬ</a>
+
             <button class="btn-circle-small" id="switch_on">Вкл ВСЁ</button>
             <button class="btn-circle-small" id="switch_off">Выкл ВСЁ</button>
         {% endif %}
