@@ -8,7 +8,7 @@ djangorestframework==3.10.3
 greenlet==0.4.15
 idna==2.8
 psycopg2==2.8.3
-Pygments==2.4.2
+Pygments==2.7.4
 pytz==2019.2
 requests==2.22.0
 six==1.12.0
